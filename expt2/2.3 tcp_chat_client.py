@@ -4,14 +4,22 @@ s = socket(AF_INET, SOCK_STREAM)
 
 s.connect(("127.0.0.1",8000)) # Connect
 
-op='hai'
+while True:
 
-print("Sending data to server...")
+    string= input("Enter message:")
+    
+    print("Sending data to server...")
 
-s.send(op.encode('utf-8')) # Send request
+    s.send(string.encode('utf-8')) # Send request
 
-data = s.recv(100).decode()# Get response
+    if(string=='bye'):
+        break;
 
-print("Received data from server:",data)
+    data = s.recv(100).decode()# Get response
+
+    print("Received data from server:",data)
+    if(data=='bye'):
+        print("bye")
+        break
 
 s.close()
