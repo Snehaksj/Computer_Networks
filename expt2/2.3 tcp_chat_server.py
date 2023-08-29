@@ -6,20 +6,25 @@ s.bind(("",8000))
 
 s.listen(5)
 
+c,a = s.accept()
+
 while True:
-
-    c,a = s.accept()
-
-    print("Received connection from", a)
 
     data=c.recv(100).decode()
 
-    print("Recieved data from client:",data)
+    if data=='bye':
+        print('bye')
+        break
+    else:
+        print("Recieved data from client:",data)
 
-    newmessage='bye'
+    newmessage=input("Enter message:")
 
     print("Sending data to client...")
 
     c.send(newmessage.encode('utf-8'))
+    
+    if(newmessage=='bye'):
+        break
 
 c.close()
