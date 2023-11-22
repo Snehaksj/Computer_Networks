@@ -9,7 +9,7 @@ while True:
     data, address =server_socket.recvfrom(1024)
     message = data.decode('utf-8')
     print("Recieved from client...")
-    if message=='bye':
+    if message.lower()=='bye':
         print('bye')
         break
     else:
@@ -17,5 +17,5 @@ while True:
     msg= input("Enter message")
     print("sending message to client")
     server_socket.sendto(msg.encode('utf-8'),address)
-    if(msg=='bye'):
+    if(msg.lower()=='bye'):
         break

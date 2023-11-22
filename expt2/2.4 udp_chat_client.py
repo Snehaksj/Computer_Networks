@@ -9,11 +9,11 @@ while True:
     print("Sending message to server...")
 
     client_socket.sendto(string.encode('utf-8'), addr)
-    if(string=='bye'):
+    if(string.lower()=='bye'):
         break
     
     data, server =client_socket.recvfrom(1024)
     response = data.decode('utf-8')
     print("Receieved message from server:",response)
-    if response=='bye':
+    if response.lower()=='bye':
         break

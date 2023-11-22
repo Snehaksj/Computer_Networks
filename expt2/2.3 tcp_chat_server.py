@@ -12,7 +12,7 @@ while True:
 
     data=c.recv(100).decode()
 
-    if data=='bye':
+    if data.lower()=='bye':
         print('bye')
         break
     else:
@@ -24,7 +24,7 @@ while True:
 
     c.send(newmessage.encode('utf-8'))
     
-    if(newmessage=='bye'):
+    if(newmessage.lower()=='bye'):
         break
 
 c.close()

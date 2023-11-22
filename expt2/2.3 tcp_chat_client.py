@@ -12,13 +12,13 @@ while True:
 
     s.send(string.encode('utf-8')) # Send request
 
-    if(string=='bye'):
+    if(string.lower()=='bye'):
         break;
 
     data = s.recv(100).decode()# Get response
 
     print("Received data from server:",data)
-    if(data=='bye'):
+    if(data.lower()=='bye'):
         print("bye")
         break
 
